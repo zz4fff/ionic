@@ -27,6 +27,6 @@ export class FeedPage {
   }
 
   getApiKey(): string {
-    return "?api_key=bbec0e6fcc5a2acba695664c614b1acf";
+    return "?api_key=YOUR API HERE";
   }
 }
