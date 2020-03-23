@@ -1,45 +1,42 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Feed</ion-title>
+    <ion-title>Filmes</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <h1>Nome do Usuário</h1>
-  <ion-card>
+  <ion-card *ngFor="let filme of (films | async)?.results">
     <ion-item>
-      <ion-avatar item-start>
-        <img src="img/marty-avatar.png" />
-      </ion-avatar>
-      <h2>Flávio Augusto de Freitas</h2>
-      <p>Março 19, 2020</p>
+      <p class="feed_title">{{ filme.original_title }}</p>
+      <p class="feed_date">(Released in {{ filme.release_date }})</p>
     </ion-item>
 
-    <img src="img/advance-card-bttf.png" />
+    <img [src]="'https://image.tmdb.org/t/p/w300/' + filme.poster_path" />
 
     <ion-card-content>
       <p>
-        Estou criando um app incrível em ionic.
+        {{ filme.overview }}
       </p>
     </ion-card-content>
 
     <ion-row>
       <ion-col>
-        <button ion-button icon-start clear small>
+        <button ion-button icon-start clear>
           <ion-icon name="thumbs-up"></ion-icon>
-          <div>12 Likes</div>
+          <div>Popularity: {{ filme.vote_average }}</div>
         </button>
       </ion-col>
       <ion-col>
-        <button ion-button icon-start clear small>
+        <button ion-button icon-start clear>
           <ion-icon name="text"></ion-icon>
-          <div>4 Comentários</div>
+          <div>Language: {{ filme.original_language }}</div>
         </button>
       </ion-col>
       <ion-col align-self-center text-center>
-        <ion-note>
-          Seconds ago
-        </ion-note>
+        <button ion-button icon-start clear>
+          <!-- <ion-icon name=""></ion-icon> -->
+          <div>Cost: US$ {{ filme.budget }}</div>
+        </button>
       </ion-col>
     </ion-row>
   </ion-card>
